@@ -1,15 +1,16 @@
-const mongoose=require("mongoose")
+const mongoose = require("mongoose");
 
-const TodoSchema=mongoose.Schema({
-    activity: {
-        type: String,
-        required: true,
+const Schema = new mongoose.Schema({
+  todos: [
+    {
+      activty: { type: String },
+      status: { type: String },
+      time_taken: { type: String },
+      action: { type: String },
     },
-    status: {
-        type: String,
-        default: "Pending"
-    }
+  ],
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+});
 
-})
-const todoModal = mongoose.model("taskAdd",TodoSchema)
-module.exports= todoModal;
+const todoModel = mongoose.model("Todo", Schema);
+module.exports = todoModel;
